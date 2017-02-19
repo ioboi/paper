@@ -1,0 +1,62 @@
+\documentclass[12pt, a4paper]{article}
+
+\immediate\write18{cat src/*.tex | detex | wc -m > cc.tex}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage[doublespacing]{setspace}
+\usepackage{csquotes}
+
+%footcite
+\usepackage{biblatex}
+\usepackage{hyperref}
+
+%Linenumbers
+%http://texblog.org/2012/02/08/adding-line-numbers-to-documents/
+\usepackage{lineno}
+
+\usepackage{geometry}
+%\usepackage{showframe}
+
+\usepackage{hanging}
+\usepackage[flushmargin]{footmisc}
+%\setlength\footnotemargin{8pt}
+
+%Für Fussnoten \fn{}
+\renewcommand{\footnotemargin}{8pt}
+\newcommand{\fn}[1]{\footnote{\hangpara{2em}{1} #1}}
+%http://tex.stackexchange.com/questions/15952/layout-of-multiple-lines-footnotes
+%http://tex.stackexchange.com/questions/65849/confusion-onehalfspacing-vs-spacing-vs-word-vs-the-world
+
+\begin{document}
+
+    %Titleseite
+    \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+    \input{title.tex}
+
+    \newgeometry{left=2cm, right=4cm, top=3cm, bottom=3cm}
+
+    %Inhaltsverzeichnis
+    \tableofcontents
+    \newpage
+
+    \section{Einleitung}
+	\input{src/einleitung.tex}
+    \newpage
+
+    %Hauptteil
+    \section{Hauptteil}
+    \input{src/hauptteil.tex}
+    \newpage
+    
+    \section{Schluss}
+    \input{src/schluss.tex}
+    \newpage
+
+    \section{Literaturverzeichnis}
+    \input{bibliographie.tex}
+
+\end{document}
